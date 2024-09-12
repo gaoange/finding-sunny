@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finding Sunny</title>
+    <!-- Google Fonts Link -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -60,7 +62,6 @@
                 <div class="toe toe3"></div>
                 <div class="toe toe4"></div>
             </div>
-            <!-- Additional paw prints can be added here if needed -->
         </div>
     </div>
 
@@ -80,18 +81,29 @@
         <!-- Event 1: The Candy Stand Scene -->
         <div id="event-1" class="event">
             <h3>Event 1: The Candy Stand Scene</h3>
+
+            <!-- Abstract Candy Stand -->
+            <div class="candy-stand">
+                <div class="stand-base"></div>
+                <div class="stand-roof"></div>
+            </div>
+
             <p>The player starts at a candy stand. Sunny is seen running towards the park.</p>
             <button id="ask-vendor-btn">Ask the Vendor</button>
             <button id="inspect-area-btn">Inspect the Area</button>
+            <p id="event-1-result"></p>
         </div>
 
         <!-- Event 2: The Park Puzzle -->
         <div id="event-2" class="event" style="display:none;">
             <h3>Event 2: The Park Puzzle</h3>
-            <p>At the park, a group of kids is playing a game. They will give you a clue after you solve their puzzle.</p>
-            <button id="start-puzzle-btn">Start Puzzle</button>
-            <input type="text" id="secret-code-input" placeholder="Enter Secret Code" />
-            <button id="submit-code-btn">Submit Code</button>
+            <p>At the park, the kids ask you a riddle:</p>
+            <p>What has keys but can't open locks?</p>
+            <button id="riddle-answer1">A piano</button>
+            <button id="riddle-answer2">A map</button>
+            <p id="event-2-result"></p>
+            <input type="text" id="secret-code-input" placeholder="Enter Secret Code" style="display:none;">
+            <button id="submit-code-btn" style="display:none;">Submit Code</button>
         </div>
     </div>
 
