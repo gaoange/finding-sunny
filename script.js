@@ -155,8 +155,24 @@ function transitionToEvent4() {
 document.getElementById('serve-customers-btn').addEventListener('click', function() {
     document.getElementById('ice-cream-game').style.display = 'block';
     startIceCreamGame();
+    startTimer(10);  // Start 10 second timer
     updateProgress(10); // Update progress
 });
+
+// Timer for Serve Customers Game
+let timerInterval;
+function startTimer(timeLeft) {
+    clearInterval(timerInterval);
+    document.getElementById('timer').textContent = timeLeft;
+    timerInterval = setInterval(function() {
+        timeLeft--;
+        document.getElementById('timer').textContent = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            gameOver();
+        }
+    }, 1000);
+}
 
 // Event 4: Slider for Negotiating Shortcut
 document.getElementById('negotiate-shortcut-btn').addEventListener('click', function() {
@@ -166,6 +182,7 @@ document.getElementById('negotiate-shortcut-btn').addEventListener('click', func
 // Ice Cream Mini-game Logic
 const orders = ["Vanilla", "Chocolate", "Strawberry"];
 let currentOrder = '';
+let servedCount = 0;
 
 function startIceCreamGame() {
     currentOrder = orders[Math.floor(Math.random() * orders.length)];
@@ -187,14 +204,27 @@ document.getElementById('strawberry-btn').addEventListener('click', function() {
 function checkOrder(flavor) {
     if (flavor === currentOrder) {
         document.getElementById('order-result').textContent = "Correct! You served the customer.";
-        setTimeout(function() {
-            document.getElementById('event-4-result').textContent = "Path cleared. You can continue.";
+        servedCount++;
+        if (servedCount >= 5) {
             document.getElementById('ice-cream-game').style.display = 'none';
-        }, 1000);
-        updateProgress(20); // Update progress
+            yaySound.play();
+            document.getElementById('event-4-result').textContent = "Path cleared. You can continue.";
+            updateProgress(20); // Update progress
+            setTimeout(function() {
+                transitionToEvent5();
+            }, 2000);
+        } else {
+            startIceCreamGame();  // Load next order
+        }
     } else {
         document.getElementById('order-result').textContent = "Incorrect! Try again.";
     }
+}
+
+// Transition to Event 5
+function transitionToEvent5() {
+    document.getElementById('event-4').style.display = 'none';
+    document.getElementById('event-5').style.display = 'block';
 }
 
 // Negotiation Slider Logic
@@ -203,6 +233,9 @@ document.getElementById('submit-negotiation-btn').addEventListener('click', func
     if (offer > 50) {
         document.getElementById('event-4-result').textContent = "The vendor accepted your offer. You may pass.";
         updateProgress(20); // Update progress
+        setTimeout(function() {
+            transitionToEvent5();
+        }, 2000);
     } else {
         document.getElementById('event-4-result').textContent = "The vendor is upset. You failed!";
         gameOverSound.play();
@@ -221,4 +254,10 @@ document.getElementById('submit-barter-btn').addEventListener('click', function(
         gameOverSound.play();
     }
 });
+
+function gameOver() {
+    document.getElementById('event-4-result').textContent = "Time ran out! Game over.";
+    gameOverSound.play();
+    document.getElementById('restart-btn').style.display = 'block';
+}
 
