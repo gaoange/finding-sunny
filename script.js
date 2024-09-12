@@ -3,6 +3,8 @@ const buttonClickSound = new Audio('audio/506053__mellau__button-click-2.wav');
 const gameOverSound = new Audio('audio/76376__deleted_user_877451__game_over.wav');
 const yaySound = new Audio('audio/428156__higgs01__yay.wav');
 const barkSound = new Audio('audio/630648__haulaway__single-bark-small-to-medium-dog.mp3');
+const barterAcceptSound = new Audio('audio/86426__deleted_user_1390811__epanody-nice.wav');
+const congratsSound = new Audio('audio/607207__fupicat__congrats.wav');
 
 // Player Progress
 let progressValue = 0;
@@ -191,23 +193,22 @@ function startIceCreamGame() {
 }
 
 document.getElementById('vanilla-btn').addEventListener('click', function() {
-    checkOrder('Vanilla');
+    checkOrder("Vanilla");
 });
 
 document.getElementById('chocolate-btn').addEventListener('click', function() {
-    checkOrder('Chocolate');
+    checkOrder("Chocolate");
 });
 
 document.getElementById('strawberry-btn').addEventListener('click', function() {
-    checkOrder('Strawberry');
+    checkOrder("Strawberry");
 });
 
 function checkOrder(flavor) {
     if (flavor === currentOrder) {
-        document.getElementById('order-result').textContent = "Correct! You served the customer.";
         servedCount++;
-        if (servedCount >= 5) {
-            document.getElementById('ice-cream-game').style.display = 'none';
+        document.getElementById('order-result').textContent = "Correct!";
+        if (servedCount === 5) {
             yaySound.play();
             document.getElementById('event-4-result').textContent = "Path cleared. You can continue.";
             updateProgress(20); // Update progress
@@ -249,6 +250,7 @@ document.getElementById('submit-barter-btn').addEventListener('click', function(
     let offer = document.getElementById('barter-input').value.toLowerCase();
     if (offer === "ring") {
         document.getElementById('barter-result').textContent = "The stranger accepts your offer. You gain information about Sunny!";
+        barterAcceptSound.play();  // Play barter accepted sound
         updateProgress(20); // Update progress
         setTimeout(transitionToEvent6, 2000);
     } else {
