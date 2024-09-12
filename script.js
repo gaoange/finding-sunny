@@ -133,3 +133,4 @@ document.getElementById('return-toy-btn').addEventListener('click', function() {
     alert('You returned the teddy bear and gained valuable information about Sunny!');
     // Proceed to the next part of the game or victory screen
 });
+
