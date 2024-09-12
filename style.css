@@ -8,6 +8,16 @@ body {
     text-align: center;
 }
 
+a#creator-link {
+    font-size: 12px;
+    color: #666;
+    text-decoration: none;
+}
+
+a#creator-link:hover {
+    color: #4CAF50;
+}
+
 /* Info Section Styling */
 #info-section {
     text-align: center;
