@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finding Sunny</title>
-    <!-- Google Fonts Link -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts Embed (Gloria Hallelujah) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -67,7 +71,7 @@
 
     <!-- Game Introduction Screen -->
     <div id="game-intro-screen" style="display: none;">
-        <h2>Help Joy Find Sunny</h2>
+        <h2>Help Joy Find Sunny!!!</h2>
         <p>Sunny has gone missing at the carnival. Can you help Joy find her beloved dog?</p>
         <div class="carnival-background">
             <div class="tent"></div>
@@ -82,13 +86,14 @@
         <div id="event-1" class="event">
             <h3>Event 1: The Candy Stand Scene</h3>
 
-            <!-- Abstract Candy Stand -->
+            <!-- Abstract Candy Stand with Stripes and Logo -->
             <div class="candy-stand">
                 <div class="stand-base"></div>
                 <div class="stand-roof"></div>
+                <p class="stand-logo">Logan's Candies</p>
             </div>
 
-            <p>The player starts at a candy stand. Sunny is seen running towards the park.</p>
+            <p>Our game starts at a vibrant candy stand filled with people. You realize Sunny is missing. Where is Sunny??</p>
             <button id="ask-vendor-btn">Ask the Vendor</button>
             <button id="inspect-area-btn">Inspect the Area</button>
             <p id="event-1-result"></p>
@@ -97,17 +102,25 @@
         <!-- Event 2: The Park Puzzle -->
         <div id="event-2" class="event" style="display:none;">
             <h3>Event 2: The Park Puzzle</h3>
-            <p>At the park, the kids ask you a riddle:</p>
-            <p>What has keys but can't open locks?</p>
+            <p>Arriving at the park, you find a group of kids playing a game. They claim to have seen Sunny but won’t tell unless the player beats their puzzle.</p>
+            
+            <div class="question-marks">
+                <!-- Floating question marks for visual effects -->
+                <div class="question-mark">?</div>
+                <div class="question-mark">?</div>
+                <div class="question-mark">?</div>
+            </div>
+
+            <p id="riddle-question">What has keys but can't open locks?</p>
             <button id="riddle-answer1">A piano</button>
             <button id="riddle-answer2">A map</button>
             <p id="event-2-result"></p>
             <input type="text" id="secret-code-input" placeholder="Enter Secret Code" style="display:none;">
             <button id="submit-code-btn" style="display:none;">Submit Code</button>
+            <button id="restart-btn" style="display:none;">Start Over</button>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
