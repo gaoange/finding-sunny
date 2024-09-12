@@ -45,17 +45,20 @@ document.getElementById('start-game-btn').addEventListener('click', function() {
 });
 
 // Event 1: Ask the Vendor
+let hasSearchedArea = false;
+
 document.getElementById('ask-vendor-btn').addEventListener('click', function() {
-    document.getElementById('event-1-result').textContent = "Vendor: I saw Sunny running towards the park.";
-    document.getElementById('inspect-area-btn').disabled = true; // Disable other button
-    setTimeout(nextEvent, 2000); // Automatically move to Event 2
-    updateProgress(20); // Update progress
+    if (!hasSearchedArea) {
+        document.getElementById('event-1-result').textContent = "Vendor: I saw Sunny running towards the park.";
+        setTimeout(nextEvent, 2000); // Automatically move to Event 2
+        updateProgress(20); // Update progress
+    }
 });
 
-// Event 1: Inspect the Area
 document.getElementById('inspect-area-btn').addEventListener('click', function() {
     document.getElementById('event-1-result').textContent = "You searched the area and found nothing.";
-    document.getElementById('ask-vendor-btn').disabled = true; // Disable other button
+    document.getElementById('ask-vendor-btn').disabled = false;
+    hasSearchedArea = true;
     setTimeout(nextEvent, 2000); // Automatically move to Event 2
     updateProgress(20); // Update progress
 });
@@ -257,7 +260,13 @@ document.getElementById('submit-barter-btn').addEventListener('click', function(
     } else {
         document.getElementById('barter-result').textContent = "The stranger declines. You lose!";
         gameOverSound.play();
+        document.getElementById('restart-game-btn').style.display = 'block'; // Add restart button
     }
+});
+
+// Restart the Game Button
+document.getElementById('restart-game-btn').addEventListener('click', function() {
+    window.location.reload();
 });
 
 // Event 6: Run Towards Sunny (Final Mini-Game)
@@ -289,6 +298,7 @@ function startRunGame() {
                 clearInterval(runInterval);
                 document.getElementById('run-result').textContent = "You found Sunny!";
                 yaySound.play();
+                congratsSound.play();
                 barkSound.play();
             }
         }
