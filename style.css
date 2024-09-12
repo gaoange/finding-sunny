@@ -16,6 +16,24 @@ body {
 
 h1, h2 {
     color: #4CAF50;
+    animation: float 3s ease-in-out infinite;
+}
+
+.floating-title {
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 p {
@@ -36,9 +54,10 @@ ul {
     margin-bottom: 20px;
 }
 
-#progress-bar {
+.green-progress-bar {
     width: 80%;
     height: 20px;
+    background-color: #4CAF50;
 }
 
 /* Game Container */
@@ -67,6 +86,14 @@ button:hover {
 .sunny-character {
     position: relative;
     margin-bottom: 20px;
+}
+
+#fixed-sunny-character {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: 60px;
 }
 
 .sunny-body {
@@ -385,28 +412,29 @@ button:hover {
 }
 
 .scoop {
-    width: 40px;
-    height: 40px;
-    background-color: #ff9999;
+    width: 30px;
+    height: 20px;
+    background-color: pink;
     border-radius: 50%;
     position: relative;
     top: -20px;
 }
 
-/* Jewelry Illustrations */
+/* Event 5 Jewelry Items */
 .jewelry-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin: 20px 0;
 }
 
 .jewelry-item {
+    margin: 0 20px;
     text-align: center;
 }
 
 .ring {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border: 3px solid gold;
     border-radius: 50%;
     margin: 0 auto;
