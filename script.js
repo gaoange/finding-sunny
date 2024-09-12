@@ -2,6 +2,7 @@
 const buttonClickSound = new Audio('audio/506053__mellau__button-click-2.wav');
 const gameOverSound = new Audio('audio/76376__deleted_user_877451__game_over.wav');
 const yaySound = new Audio('audio/428156__higgs01__yay.wav');
+const barkSound = new Audio('audio/630648__haulaway__single-bark-small-to-medium-dog.mp3');
 
 // Player Progress
 let progressValue = 0;
@@ -246,14 +247,50 @@ document.getElementById('submit-negotiation-btn').addEventListener('click', func
 // Event 5: Search and Barter with Stranger
 document.getElementById('submit-barter-btn').addEventListener('click', function() {
     let offer = document.getElementById('barter-input').value.toLowerCase();
-    if (offer === "antique") {
+    if (offer === "ring") {
         document.getElementById('barter-result').textContent = "The stranger accepts your offer. You gain information about Sunny!";
         updateProgress(20); // Update progress
+        setTimeout(transitionToEvent6, 2000);
     } else {
         document.getElementById('barter-result').textContent = "The stranger declines. You lose!";
         gameOverSound.play();
     }
 });
+
+// Event 6: Run Towards Sunny (Final Mini-Game)
+function transitionToEvent6() {
+    document.getElementById('event-5').style.display = 'none';
+    document.getElementById('event-6').style.display = 'block';
+    startRunGame();
+}
+
+function startRunGame() {
+    barkSound.play();
+    let timeLeft = 6;
+    let runProgress = 0;
+    const runInterval = setInterval(function() {
+        timeLeft--;
+        document.getElementById('run-timer').textContent = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(runInterval);
+            document.getElementById('run-result').textContent = "You lost Sunny!";
+            gameOverSound.play();
+        }
+    }, 1000);
+
+    document.addEventListener('keydown', function(event) {
+        if (event.code === 'Space') {
+            runProgress += 10;
+            document.getElementById('run-progress').value = runProgress;
+            if (runProgress >= 100) {
+                clearInterval(runInterval);
+                document.getElementById('run-result').textContent = "You found Sunny!";
+                yaySound.play();
+                barkSound.play();
+            }
+        }
+    });
+}
 
 function gameOver() {
     document.getElementById('event-4-result').textContent = "Time ran out! Game over.";
