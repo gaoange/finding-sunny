@@ -32,6 +32,12 @@
         <p>Use the buttons and input fields to interact with the game. Each choice you make will affect the storyline. Can you find Sunny?</p>
     </div>
 
+    <!-- Progress Bar -->
+    <div id="progress-container">
+        <p>Progress to finding Sunny:</p>
+        <progress id="progress-bar" value="0" max="100"></progress>
+    </div>
+
     <!-- Embed Audio (Locally Hosted in 'audio/' folder) -->
     <audio id="background-audio" loop>
         <source src="audio/442911__scicodedev__calm_happy_rpgtownbackground.mp3" type="audio/mpeg">
@@ -128,15 +134,14 @@
             <!-- Abstract Playground Objects -->
             <div class="playground">
                 <div class="sandbox"></div>
+                <input type="checkbox" id="search-sandbox" class="search-checkbox">
                 <div class="slide"></div>
+                <input type="checkbox" id="search-slide" class="search-checkbox">
                 <div class="trash-can"></div>
+                <input type="checkbox" id="search-trash" class="search-checkbox">
             </div>
 
-            <!-- Checkboxes for searching -->
             <p>Search locations:</p>
-            <input type="checkbox" id="search-sandbox"> Sandbox<br>
-            <input type="checkbox" id="search-slide"> Slide<br>
-            <input type="checkbox" id="search-trash"> Trash Can<br>
             <p id="search-result"></p>
             <button id="return-toy-btn" style="display:none;">Return Toy</button>
         </div>
@@ -164,9 +169,20 @@
                 <button id="submit-negotiation-btn">Submit Offer</button>
             </div>
         </div>
+
+        <!-- Event 5: The Mysterious Stranger -->
+        <div id="event-5" class="event" style="display:none;">
+            <h3>Event 5: The Mysterious Stranger</h3>
+            <p>A stranger offers information about Sunny but wants something in return—a rare item from a nearby antique shop.</p>
+            <p>Search Antique Shop:</p>
+            <input type="checkbox" id="search-antique" class="search-checkbox"> Antique Shop<br>
+            <p>Barter with the Stranger:</p>
+            <input type="text" id="barter-input" placeholder="Enter your offer...">
+            <button id="submit-barter-btn">Submit Offer</button>
+            <p id="barter-result"></p>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
