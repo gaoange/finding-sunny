@@ -130,7 +130,70 @@ document.getElementById('search-trash').addEventListener('click', function() {
 
 // Return the Toy Button
 document.getElementById('return-toy-btn').addEventListener('click', function() {
-    alert('You returned the teddy bear and gained valuable information about Sunny!');
-    // Proceed to the next part of the game or victory screen
+    yaySound.play();
+    alert('You returned the teddy bear and gained valuable information about Sunny! Sunny was last seen near the ice cream cart.');
+    transitionToEvent4();
+});
+
+// Transition to Event 4
+function transitionToEvent4() {
+    document.getElementById('event-3').style.display = 'none';
+    document.getElementById('event-4').style.display = 'block';
+}
+
+// Event 4: Serve Customers Mini-game
+document.getElementById('serve-customers-btn').addEventListener('click', function() {
+    document.getElementById('ice-cream-game').style.display = 'block';
+    startIceCreamGame();
+});
+
+// Event 4: Slider for Negotiating Shortcut
+document.getElementById('negotiate-shortcut-btn').addEventListener('click', function() {
+    document.getElementById('slider-negotiation').style.display = 'block';
+});
+
+// Ice Cream Mini-game Logic
+const orders = ["Vanilla", "Chocolate", "Strawberry"];
+let currentOrder = '';
+
+function startIceCreamGame() {
+    currentOrder = orders[Math.floor(Math.random() * orders.length)];
+    document.getElementById('order').textContent = currentOrder;
+}
+
+document.getElementById('vanilla-btn').addEventListener('click', function() {
+    checkOrder('Vanilla');
+});
+
+document.getElementById('chocolate-btn').addEventListener('click', function() {
+    checkOrder('Chocolate');
+});
+
+document.getElementById('strawberry-btn').addEventListener('click', function() {
+    checkOrder('Strawberry');
+});
+
+function checkOrder(flavor) {
+    if (flavor === currentOrder) {
+        document.getElementById('order-result').textContent = "Correct! You served the customer.";
+        setTimeout(function() {
+            document.getElementById('event-4-result').textContent = "Path cleared. You can continue.";
+            document.getElementById('ice-cream-game').style.display = 'none';
+        }, 1000);
+    } else {
+        document.getElementById('order-result').textContent = "Incorrect! Try again.";
+    }
+}
+
+// Negotiation Slider Logic
+document.getElementById('submit-negotiation-btn').addEventListener('click', function() {
+    let offer = document.getElementById('negotiation-range').value;
+    if (offer > 50) {
+        document.getElementById('event-4-result').textContent = "The vendor accepted your offer. You may pass.";
+    } else {
+        document.getElementById('event-4-result').textContent = "The vendor is upset. You failed!";
+        gameOverSound.play();
+        document.getElementById('restart-btn').style.display = 'block';
+    }
 });
 
