@@ -320,3 +320,39 @@ button:hover {
         transform: translateY(0);
     }
 }
+
+/* Event 3 Abstract Illustrations */
+.playground {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    margin: 20px auto;
+}
+
+.sandbox {
+    width: 80px;
+    height: 40px;
+    background-color: #e2b575;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.slide {
+    width: 60px;
+    height: 120px;
+    background-color: #66ccff;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.trash-can {
+    width: 40px;
+    height: 60px;
+    background-color: #333;
+    position: absolute;
+    bottom: 10px;
+    left: 150px;
+}
+
