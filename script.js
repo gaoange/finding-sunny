@@ -16,6 +16,13 @@ function updateProgress(amount) {
     progressBar.value = progressValue;
 }
 
+// Play button click sound every time any button is clicked
+document.querySelectorAll('button').forEach(function(button) {
+    button.addEventListener('click', function() {
+        buttonClickSound.play();
+    });
+});
+
 // Play the background audio when the Begin button is clicked
 document.getElementById('begin-btn').addEventListener('click', function() {
     const audio = document.getElementById('background-audio');
@@ -179,7 +186,17 @@ function startTimer(timeLeft) {
 
 // Event 4: Slider for Negotiating Shortcut
 document.getElementById('negotiate-shortcut-btn').addEventListener('click', function() {
-    document.getElementById('slider-negotiation').style.display = 'block';
+    const offer = window.prompt("Enter a value between 1 and 100 to offer the vendor.");
+    if (offer >= 50) {
+        document.getElementById('event-4-result').textContent = "The vendor accepted your offer. You may pass.";
+        yaySound.play();
+        setTimeout(function() {
+            transitionToEvent5();
+        }, 2000);
+    } else {
+        document.getElementById('event-4-result').textContent = "The vendor is upset. You failed!";
+        gameOverSound.play();
+    }
 });
 
 // Ice Cream Mini-game Logic
@@ -228,22 +245,6 @@ function transitionToEvent5() {
     document.getElementById('event-4').style.display = 'none';
     document.getElementById('event-5').style.display = 'block';
 }
-
-// Negotiation Slider Logic
-document.getElementById('submit-negotiation-btn').addEventListener('click', function() {
-    let offer = document.getElementById('negotiation-range').value;
-    if (offer > 50) {
-        document.getElementById('event-4-result').textContent = "The vendor accepted your offer. You may pass.";
-        updateProgress(20); // Update progress
-        setTimeout(function() {
-            transitionToEvent5();
-        }, 2000);
-    } else {
-        document.getElementById('event-4-result').textContent = "The vendor is upset. You failed!";
-        gameOverSound.play();
-        document.getElementById('restart-btn').style.display = 'block';
-    }
-});
 
 // Event 5: Search and Barter with Stranger
 document.getElementById('submit-barter-btn').addEventListener('click', function() {
@@ -299,4 +300,3 @@ function gameOver() {
     gameOverSound.play();
     document.getElementById('restart-btn').style.display = 'block';
 }
-
