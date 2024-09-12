@@ -16,10 +16,10 @@
 
     <!-- Info Section -->
     <div id="info-section">
-        <h1>Finding Sunny: A Web Adventure</h1>
+        <h1 class="floating-title">Finding Sunny: A Web Adventure</h1>
         <p>Welcome to Finding Sunny, an interactive game where the player embarks on a quest to locate a missing dog named Sunny. As you explore, solve puzzles, and interact with characters, you will uncover clues to Sunny's whereabouts.</p>
 
-        <h2>Game Overview</h2>
+        <h2 class="floating-title">Game Overview</h2>
         <p>This game features various levels, each with different mini-games and puzzles. Players must make decisions that affect the outcome of the story. Are you ready for the challenge?</p>
 
         <ul>
@@ -28,14 +28,29 @@
             <li>Solve puzzles to unlock new areas.</li>
         </ul>
 
-        <h2>How to Play</h2>
+        <h2 class="floating-title">How to Play</h2>
         <p>Use the buttons and input fields to interact with the game. Each choice you make will affect the storyline. Can you find Sunny?</p>
+    </div>
+
+    <!-- Sunny Character at Top Right Corner -->
+    <div id="fixed-sunny-character" class="sunny-character">
+        <div class="sunny-body"></div>
+        <div class="sunny-head">
+            <div class="sunny-eye left-eye"></div>
+            <div class="sunny-eye right-eye"></div>
+            <div class="sunny-nose"></div>
+            <div class="sunny-ear left-ear"></div>
+            <div class="sunny-ear right-ear"></div>
+        </div>
+        <div class="sunny-leg left-leg"></div>
+        <div class="sunny-leg right-leg"></div>
+        <div class="sunny-tail"></div>
     </div>
 
     <!-- Progress Bar -->
     <div id="progress-container">
         <p>Progress to finding Sunny:</p>
-        <progress id="progress-bar" value="0" max="100"></progress>
+        <progress id="progress-bar" value="0" max="100" class="green-progress-bar"></progress>
     </div>
 
     <!-- Embed Audio (Locally Hosted in 'audio/' folder) -->
@@ -91,7 +106,6 @@
         <!-- Event 1: The Candy Stand Scene -->
         <div id="event-1" class="event">
             <h3>Event 1: The Candy Stand Scene</h3>
-            <!-- Abstract Candy Stand without text -->
             <div class="candy-stand">
                 <div class="stand-base"></div>
                 <div class="stand-roof"></div>
@@ -109,7 +123,6 @@
             <p>Arriving at the park, you find a group of kids playing a game. They claim to have seen Sunny but won’t tell unless the player beats their puzzle.</p>
             
             <div class="question-marks">
-                <!-- Floating question marks for visual effects -->
                 <div class="question-mark">?</div>
                 <div class="question-mark">?</div>
                 <div class="question-mark">?</div>
@@ -129,7 +142,6 @@
             <h3>Event 3: The Lost Toy Search</h3>
             <p>A distraught parent is searching for their child’s lost toy in the playground. Helping them could lead to valuable information about Sunny.</p>
 
-            <!-- Abstract Playground Objects -->
             <div class="playground">
                 <div class="sandbox"></div>
                 <input type="checkbox" id="search-sandbox" class="search-checkbox">
@@ -151,19 +163,14 @@
             <button id="serve-customers-btn">Serve Customers</button>
             <button id="negotiate-shortcut-btn">Negotiate a Shortcut</button>
             <p id="event-4-result"></p>
-            <!-- Ice Cream Mini-game -->
+            <div class="ice-cream-container">
+                <div class="ice-cream">
+                    <div class="cone"></div>
+                    <div class="scoop"></div>
+                </div>
+            </div>
             <div id="ice-cream-game" style="display:none;">
                 <p>Match ice cream orders quickly to serve customers!</p>
-                <div class="ice-cream-container">
-                    <div class="ice-cream">
-                        <div class="cone"></div>
-                        <div class="scoop"></div>
-                    </div>
-                    <div class="ice-cream">
-                        <div class="cone"></div>
-                        <div class="scoop"></div>
-                    </div>
-                </div>
                 <p>Order: <span id="order"></span></p>
                 <button id="vanilla-btn">Vanilla</button>
                 <button id="chocolate-btn">Chocolate</button>
@@ -171,12 +178,6 @@
                 <p id="order-result"></p>
                 <p>Time left: <span id="timer">10</span> seconds</p>
                 <button id="restart-btn" style="display:none;">Restart</button>
-            </div>
-            <!-- Slider for negotiation -->
-            <div id="slider-negotiation" style="display:none;">
-                <label for="negotiation-range">Adjust Offer:</label>
-                <input type="range" id="negotiation-range" min="0" max="100">
-                <button id="submit-negotiation-btn">Submit Offer</button>
             </div>
         </div>
 
@@ -201,7 +202,7 @@
                 </div>
             </div>
 
-            <p>Barter with the Stranger: She loves gold.</p>
+            <p>Barter with the Stranger: We are told she loves gold.</p>
             <input type="text" id="barter-input" placeholder="Enter your offer...">
             <button id="submit-barter-btn">Submit Offer</button>
             <p id="barter-result"></p>
