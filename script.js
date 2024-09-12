@@ -1,5 +1,6 @@
 // Play the button click sound
 const buttonClickSound = new Audio('audio/506053__mellau__button-click-2.wav');
+const gameOverSound = new Audio('audio/76376__deleted_user_877451__game_over.wav');
 
 document.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', () => {
@@ -46,24 +47,60 @@ function nextEvent() {
 }
 
 // Event 2: Riddle
+const riddles = [
+    { question: "What has keys but can't open locks?", correct: "A piano" },
+    { question: "What runs but never walks?", correct: "A river" },
+    { question: "What has a face but can't smile?", correct: "A clock" }
+];
+
+// Pick a random riddle
+const selectedRiddle = riddles[Math.floor(Math.random() * riddles.length)];
+document.getElementById('riddle-question').textContent = selectedRiddle.question;
+
+// Handle riddle answers
 document.getElementById('riddle-answer1').addEventListener('click', function() {
-    document.getElementById('event-2-result').textContent = "Correct! You can now enter the secret code.";
-    document.getElementById('secret-code-input').style.display = 'block';
-    document.getElementById('submit-code-btn').style.display = 'block';
+    if (selectedRiddle.correct === "A piano") {
+        document.getElementById('event-2-result').textContent = "Correct! The secret code is bananas.";
+        showSecretCodeInput();
+    } else {
+        handleFailure();
+    }
 });
 
 document.getElementById('riddle-answer2').addEventListener('click', function() {
-    document.getElementById('event-2-result').textContent = "Incorrect! The children laugh at you.";
+    if (selectedRiddle.correct === "A river" || selectedRiddle.correct === "A clock") {
+        document.getElementById('event-2-result').textContent = "Correct! The secret code is bananas.";
+        showSecretCodeInput();
+    } else {
+        handleFailure();
+    }
+});
+
+function showSecretCodeInput() {
+    document.getElementById('secret-code-input').style.display = 'block';
+    document.getElementById('submit-code-btn').style.display = 'block';
+}
+
+function handleFailure() {
+    document.getElementById('event-2-result').textContent = "You failed. The children laughed.";
+    gameOverSound.play();
     document.getElementById('riddle-answer1').disabled = true;
     document.getElementById('riddle-answer2').disabled = true;
+    document.getElementById('restart-btn').style.display = 'block';
+}
+
+// Restart the game from Event 2
+document.getElementById('restart-btn').addEventListener('click', function() {
+    window.location.reload();
 });
 
 // Event 2: Submit Code
 document.getElementById('submit-code-btn').addEventListener('click', function() {
     let code = document.getElementById('secret-code-input').value;
-    if (code === '1234') {
-        alert('Correct! The clue is: Sunny was seen near the ice cream cart.');
+    if (code.toLowerCase() === 'bananas') {
+        alert('Correct! You may proceed to the next event.');
     } else {
         alert('Incorrect code, try again.');
     }
 });
+
