@@ -3,17 +3,22 @@ const buttonClickSound = new Audio('audio/506053__mellau__button-click-2.wav');
 const gameOverSound = new Audio('audio/76376__deleted_user_877451__game_over.wav');
 const yaySound = new Audio('audio/428156__higgs01__yay.wav');
 
-document.querySelectorAll('button').forEach(button => {
-    button.addEventListener('click', () => {
-        buttonClickSound.play();
-    });
-});
+// Player Progress
+let progressValue = 0;
+const progressBar = document.getElementById('progress-bar');
+
+// Update progress bar function
+function updateProgress(amount) {
+    progressValue += amount;
+    progressBar.value = progressValue;
+}
 
 // Play the background audio when the Begin button is clicked
 document.getElementById('begin-btn').addEventListener('click', function() {
     const audio = document.getElementById('background-audio');
     audio.volume = 0.5;  // Set volume
     audio.play();  // Play audio
+    updateProgress(10); // Update progress
 });
 
 // Button to transition to game intro
@@ -26,6 +31,7 @@ document.getElementById('begin-btn').addEventListener('click', function() {
 document.getElementById('start-game-btn').addEventListener('click', function() {
     document.getElementById('game-intro-screen').style.display = 'none';
     document.getElementById('game-container').style.display = 'block';
+    updateProgress(10); // Update progress
 });
 
 // Event 1: Ask the Vendor
@@ -33,6 +39,7 @@ document.getElementById('ask-vendor-btn').addEventListener('click', function() {
     document.getElementById('event-1-result').textContent = "Vendor: I saw Sunny running towards the park.";
     document.getElementById('inspect-area-btn').disabled = true; // Disable other button
     setTimeout(nextEvent, 2000); // Automatically move to Event 2
+    updateProgress(20); // Update progress
 });
 
 // Event 1: Inspect the Area
@@ -40,6 +47,7 @@ document.getElementById('inspect-area-btn').addEventListener('click', function()
     document.getElementById('event-1-result').textContent = "You searched the area and found nothing.";
     document.getElementById('ask-vendor-btn').disabled = true; // Disable other button
     setTimeout(nextEvent, 2000); // Automatically move to Event 2
+    updateProgress(20); // Update progress
 });
 
 function nextEvent() {
@@ -103,6 +111,7 @@ document.getElementById('submit-code-btn').addEventListener('click', function() 
     if (code.toLowerCase() === 'bananas') {
         alert('Correct! You may proceed to the next event.');
         transitionToEvent3();
+        updateProgress(20); // Update progress
     } else {
         alert('Incorrect code, try again.');
     }
@@ -133,6 +142,7 @@ document.getElementById('return-toy-btn').addEventListener('click', function() {
     yaySound.play();
     alert('You returned the teddy bear and gained valuable information about Sunny! Sunny was last seen near the ice cream cart.');
     transitionToEvent4();
+    updateProgress(20); // Update progress
 });
 
 // Transition to Event 4
@@ -145,6 +155,7 @@ function transitionToEvent4() {
 document.getElementById('serve-customers-btn').addEventListener('click', function() {
     document.getElementById('ice-cream-game').style.display = 'block';
     startIceCreamGame();
+    updateProgress(10); // Update progress
 });
 
 // Event 4: Slider for Negotiating Shortcut
@@ -180,6 +191,7 @@ function checkOrder(flavor) {
             document.getElementById('event-4-result').textContent = "Path cleared. You can continue.";
             document.getElementById('ice-cream-game').style.display = 'none';
         }, 1000);
+        updateProgress(20); // Update progress
     } else {
         document.getElementById('order-result').textContent = "Incorrect! Try again.";
     }
@@ -190,10 +202,23 @@ document.getElementById('submit-negotiation-btn').addEventListener('click', func
     let offer = document.getElementById('negotiation-range').value;
     if (offer > 50) {
         document.getElementById('event-4-result').textContent = "The vendor accepted your offer. You may pass.";
+        updateProgress(20); // Update progress
     } else {
         document.getElementById('event-4-result').textContent = "The vendor is upset. You failed!";
         gameOverSound.play();
         document.getElementById('restart-btn').style.display = 'block';
+    }
+});
+
+// Event 5: Search and Barter with Stranger
+document.getElementById('submit-barter-btn').addEventListener('click', function() {
+    let offer = document.getElementById('barter-input').value.toLowerCase();
+    if (offer === "antique") {
+        document.getElementById('barter-result').textContent = "The stranger accepts your offer. You gain information about Sunny!";
+        updateProgress(20); // Update progress
+    } else {
+        document.getElementById('barter-result').textContent = "The stranger declines. You lose!";
+        gameOverSound.play();
     }
 });
 
