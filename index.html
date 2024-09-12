@@ -17,6 +17,7 @@
     <!-- Info Section -->
     <div id="info-section">
         <h1 class="floating-title">Finding Sunny: A Web Adventure</h1>
+        <a href="https://gaoange.github.io/" target="_blank" id="creator-link">For more information on the creator</a>
         <p>Welcome to Finding Sunny, an interactive game where the player embarks on a quest to locate a missing dog named Sunny. As you explore, solve puzzles, and interact with characters, you will uncover clues to Sunny's whereabouts.</p>
 
         <h2 class="floating-title">Game Overview</h2>
@@ -206,6 +207,7 @@
             <input type="text" id="barter-input" placeholder="Enter your offer...">
             <button id="submit-barter-btn">Submit Offer</button>
             <p id="barter-result"></p>
+            <button id="restart-game-btn" style="display:none;">Start Over</button>
         </div>
 
         <!-- Event 6: Final Mini-Game: Run Towards Sunny -->
@@ -214,6 +216,10 @@
             <p>Press the spacebar rapidly to reach Sunny before time runs out!</p>
             <progress id="run-progress" value="0" max="100"></progress>
             <p>Time left: <span id="run-timer">6</span> seconds</p>
+            <div class="final-scene">
+                <div class="sunny-character"></div>
+                <div class="tent"></div>
+            </div>
             <p id="run-result"></p>
         </div>
 
