@@ -250,6 +250,8 @@ button:hover {
     font-size: 1.2em;
     color: black;
     font-weight: bold;
+    position: relative;
+    bottom: -20px; /* Adjust this to move it under buttons */
 }
 
 /* Carnival abstract shapes */
@@ -378,5 +380,14 @@ button:hover {
 /* Negotiation Bar */
 #negotiation-range {
     margin-top: 10px;
+}
+
+/* Ice Cream Cart and Mini-Game */
+#ice-cream-game {
+    margin-top: 20px;
+}
+
+#order-result {
+    margin: 10px 0;
 }
 
