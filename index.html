@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding Sunny</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Info Section -->
+    <div id="info-section">
+        <h1>Finding Sunny: A Web Adventure</h1>
+        <p>Welcome to Finding Sunny, an interactive game where the player embarks on a quest to locate a missing dog named Sunny. As you explore, solve puzzles, and interact with characters, you will uncover clues to Sunny's whereabouts.</p>
+
+        <h2>Game Overview</h2>
+        <p>This game features various levels, each with different mini-games and puzzles. Players must make decisions that affect the outcome of the story. Are you ready for the challenge?</p>
+
+        <ul>
+            <li>Explore different locations like the candy stand, park, and market.</li>
+            <li>Interact with characters to gather clues.</li>
+            <li>Solve puzzles to unlock new areas.</li>
+        </ul>
+
+        <h2>How to Play</h2>
+        <p>Use the buttons and input fields to interact with the game. Each choice you make will affect the storyline. Can you find Sunny?</p>
+    </div>
+
+    <!-- Embed Audio (Locally Hosted) -->
+    <audio id="background-audio" loop>
+        <source src="audio/your-audio-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Game Section -->
+    <div id="intro-screen">
+        <h1 class="game-title">Finding Sunny</h1>
+        <div class="sunny-character">
+            <div class="sunny-body"></div>
+            <div class="sunny-head">
+                <div class="sunny-eye left-eye"></div>
+                <div class="sunny-eye right-eye"></div>
+                <div class="sunny-nose"></div>
+                <div class="sunny-ear left-ear"></div>
+                <div class="sunny-ear right-ear"></div>
+            </div>
+            <div class="sunny-leg left-leg"></div>
+            <div class="sunny-leg right-leg"></div>
+            <div class="sunny-tail"></div>
+        </div>
+        <p>Help Joy find her dog Sunny. Begin your adventure by clicking below!</p>
+        <button id="begin-btn">Begin</button>
+
+        <!-- Paw prints -->
+        <div id="paw-prints">
+            <div class="paw-print">
+                <div class="paw-pad"></div>
+                <div class="toe toe1"></div>
+                <div class="toe toe2"></div>
+                <div class="toe toe3"></div>
+                <div class="toe toe4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Introduction Screen -->
+    <div id="game-intro-screen" style="display: none;">
+        <h2>Help Joy Find Sunny</h2>
+        <p>Sunny has gone missing at the carnival. Can you help Joy find her beloved dog?</p>
+        <div class="carnival-background">
+            <div class="tent"></div>
+            <div class="ferris-wheel"></div>
+        </div>
+        <button id="start-game-btn">Start the Search</button>
+    </div>
+
+    <!-- Game Event Screens -->
+    <div id="game-container" style="display:none;">
+        <!-- Event 1: The Candy Stand Scene -->
+        <div id="event-1" class="event">
+            <h3>Event 1: The Candy Stand Scene</h3>
+            <p>The player starts at a candy stand. Sunny is seen running towards the park.</p>
+            <button id="ask-vendor-btn">Ask the Vendor</button>
+            <button id="inspect-area-btn">Inspect the Area</button>
+        </div>
+
+        <!-- Event 2: The Park Puzzle -->
+        <div id="event-2" class="event" style="display:none;">
+            <h3>Event 2: The Park Puzzle</h3>
+            <p>At the park, a group of kids is playing a game. They will give you a clue after you solve their puzzle.</p>
+            <button id="start-puzzle-btn">Start Puzzle</button>
+            <input type="text" id="secret-code-input" placeholder="Enter Secret Code" />
+            <button id="submit-code-btn">Submit Code</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
