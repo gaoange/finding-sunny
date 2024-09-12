@@ -91,12 +91,10 @@
         <!-- Event 1: The Candy Stand Scene -->
         <div id="event-1" class="event">
             <h3>Event 1: The Candy Stand Scene</h3>
-
-            <!-- Abstract Candy Stand with Stripes and Logo -->
+            <!-- Abstract Candy Stand without text -->
             <div class="candy-stand">
                 <div class="stand-base"></div>
                 <div class="stand-roof"></div>
-                <p class="stand-logo">Logan's Candies</p>
             </div>
 
             <p>Our game starts at a vibrant candy stand filled with people. You realize Sunny is missing. Where is Sunny??</p>
@@ -156,12 +154,23 @@
             <!-- Ice Cream Mini-game -->
             <div id="ice-cream-game" style="display:none;">
                 <p>Match ice cream orders quickly to serve customers!</p>
+                <div class="ice-cream-container">
+                    <div class="ice-cream">
+                        <div class="cone"></div>
+                        <div class="scoop"></div>
+                    </div>
+                    <div class="ice-cream">
+                        <div class="cone"></div>
+                        <div class="scoop"></div>
+                    </div>
+                </div>
                 <p>Order: <span id="order"></span></p>
                 <button id="vanilla-btn">Vanilla</button>
                 <button id="chocolate-btn">Chocolate</button>
                 <button id="strawberry-btn">Strawberry</button>
                 <p id="order-result"></p>
                 <p>Time left: <span id="timer">10</span> seconds</p>
+                <button id="restart-btn" style="display:none;">Restart</button>
             </div>
             <!-- Slider for negotiation -->
             <div id="slider-negotiation" style="display:none;">
@@ -175,13 +184,38 @@
         <div id="event-5" class="event" style="display:none;">
             <h3>Event 5: The Mysterious Stranger</h3>
             <p>A stranger offers information about Sunny but wants something in return—a rare item from a nearby antique shop.</p>
-            <p>Search Antique Shop:</p>
-            <input type="checkbox" id="search-antique" class="search-checkbox"> Antique Shop<br>
-            <p>Barter with the Stranger:</p>
+
+            <!-- Jewelry Illustrations -->
+            <div class="jewelry-container">
+                <div class="jewelry-item">
+                    <div class="ring"></div>
+                    <p>Ring</p>
+                </div>
+                <div class="jewelry-item">
+                    <div class="lipstick"></div>
+                    <p>Lipstick</p>
+                </div>
+                <div class="jewelry-item">
+                    <div class="pen"></div>
+                    <p>Pen</p>
+                </div>
+            </div>
+
+            <p>Barter with the Stranger: She loves gold.</p>
             <input type="text" id="barter-input" placeholder="Enter your offer...">
             <button id="submit-barter-btn">Submit Offer</button>
             <p id="barter-result"></p>
         </div>
+
+        <!-- Event 6: Final Mini-Game: Run Towards Sunny -->
+        <div id="event-6" class="event" style="display:none;">
+            <h3>Final Mini-Game: Run Towards Sunny!</h3>
+            <p>Press the spacebar rapidly to reach Sunny before time runs out!</p>
+            <progress id="run-progress" value="0" max="100"></progress>
+            <p>Time left: <span id="run-timer">6</span> seconds</p>
+            <p id="run-result"></p>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
