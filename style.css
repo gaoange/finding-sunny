@@ -244,16 +244,6 @@ button:hover {
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
-.stand-logo {
-    margin-top: 5px;
-    text-align: center;
-    font-size: 1.2em;
-    color: black;
-    font-weight: bold;
-    position: relative;
-    bottom: -20px; /* Adjust this to move it under buttons */
-}
-
 /* Carnival abstract shapes */
 .carnival-background {
     position: relative;
@@ -377,17 +367,68 @@ button:hover {
     margin-left: 10px;
 }
 
-/* Negotiation Bar */
-#negotiation-range {
-    margin-top: 10px;
+/* Ice Cream Game Abstract Illustrations */
+.ice-cream-container {
+    display: flex;
+    justify-content: center;
 }
 
-/* Ice Cream Cart and Mini-Game */
-#ice-cream-game {
-    margin-top: 20px;
+.ice-cream {
+    margin: 10px;
 }
 
-#order-result {
-    margin: 10px 0;
+.cone {
+    width: 20px;
+    height: 40px;
+    background-color: #c2a66f;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
+.scoop {
+    width: 40px;
+    height: 40px;
+    background-color: #ff9999;
+    border-radius: 50%;
+    position: relative;
+    top: -20px;
+}
+
+/* Jewelry Illustrations */
+.jewelry-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.jewelry-item {
+    text-align: center;
+}
+
+.ring {
+    width: 30px;
+    height: 30px;
+    border: 3px solid gold;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.lipstick {
+    width: 10px;
+    height: 40px;
+    background-color: red;
+    margin: 0 auto;
+    position: relative;
+}
+
+.pen {
+    width: 5px;
+    height: 50px;
+    background-color: blue;
+    margin: 0 auto;
+}
+
+/* Event 6: Run Towards Sunny */
+#run-progress {
+    width: 80%;
+    height: 20px;
+}
