@@ -140,8 +140,33 @@
             <p id="search-result"></p>
             <button id="return-toy-btn" style="display:none;">Return Toy</button>
         </div>
+
+        <!-- Event 4: The Ice Cream Cart Distraction -->
+        <div id="event-4" class="event" style="display:none;">
+            <h3>Event 4: The Ice Cream Cart Distraction</h3>
+            <p>On the way to the next clue, the player encounters an ice cream cart blocking the path. The vendor offers a choice—help serve customers or find another way around.</p>
+            <button id="serve-customers-btn">Serve Customers</button>
+            <button id="negotiate-shortcut-btn">Negotiate a Shortcut</button>
+            <p id="event-4-result"></p>
+            <!-- Ice Cream Mini-game -->
+            <div id="ice-cream-game" style="display:none;">
+                <p>Match ice cream orders quickly to serve customers!</p>
+                <p>Order: <span id="order"></span></p>
+                <button id="vanilla-btn">Vanilla</button>
+                <button id="chocolate-btn">Chocolate</button>
+                <button id="strawberry-btn">Strawberry</button>
+                <p id="order-result"></p>
+            </div>
+            <!-- Slider for negotiation -->
+            <div id="slider-negotiation" style="display:none;">
+                <label for="negotiation-range">Adjust Offer:</label>
+                <input type="range" id="negotiation-range" min="0" max="100">
+                <button id="submit-negotiation-btn">Submit Offer</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
